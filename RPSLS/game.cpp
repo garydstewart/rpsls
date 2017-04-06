@@ -25,17 +25,13 @@
 #include "game.h"
 #include <algorithm>
 
-
 Game::Game()
-{
-    
+{   
 }
-
 
 Game::~Game()
 {
 }
-
 
 auto Game::Play(std::string string) -> void
 {
@@ -61,16 +57,14 @@ auto Game::Play(std::string string) -> void
     UpdateScore();
 
     // todo: refactor and make it display at end of game rounds
-
     Display::DisplayScore(player_score, ai_score);
 
     // todo: update game state and menu
     Reset();
-
 }
 
-int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
 
+int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
 auto Game::CalculateWinner(int &ai_choice_num, int &player_choice_num) -> void
 {
     int result = mod((ai_choice_num - player_choice_num),5);
@@ -110,10 +104,8 @@ auto Game::NameToNumber(std::string name) -> int
     {
         return distance(game_pieces.begin(), game_piece_iter);
     }
-    else
-    {
-        throw "INVALID_GAME_PIECE";
-    }
+    
+    throw "INVALID_GAME_PIECE";
 }
 
 auto Game::NumberToName(int number) -> std::string

@@ -37,7 +37,6 @@ enum struct GameState
     kMenu,
     kPlayGame,
     kDisplayResult
-
 };
 
 class Game
@@ -47,8 +46,6 @@ public:
     ~Game();
     void Reset() { winner = ""; is_tie = false; }
     auto Play(std::string string) -> void;
-
-    
 
 private:
     /**
@@ -60,16 +57,9 @@ private:
      *  4 - Scissors 
      */
     std::vector<std::string>                    game_pieces  = {"Rock","Spock","Paper","Lizard","Scissors"};
-
     std::random_device                          rd;
-
-    /**
-     * \brief Every game has a scoring system: here we assign the values to keep track of the wins.
-     */
     int                                         player_score          = 0;
     int                                         ai_score              = 0;
-
-    // containers for game logic
     int                                         player_choice_num     = 0;
     int                                         ai_choice_num         = 0;
     std::string                                 player_choice_str     = "";
@@ -77,20 +67,21 @@ private:
     std::string                                 winner                = "";
     bool                                        is_tie                = false;
     bool                                        banner_displayed      = false;
+
     /**
      * \brief  Searches for the game piece string (such as "Spock") in the vector
      * \return index of matched string
      */
-    auto                                        NameToNumber(std::string name) -> int;
+    auto NameToNumber(std::string name)                               -> int;
 
     /**
      * \brief Retrieves the item at index from the vector
      * \return name of game piece in "String" format
      */
-    auto                                        NumberToName(int number)  -> std::string;
-    auto                                        AiMakesChoice()           -> int;
-    auto                                        CalculateWinner(int &ai_choice_num, int &player_choice_num)         -> void;
-    auto                                        UpdateScore()             -> void;
+    auto NumberToName(int number)                                     -> std::string;
 
+    auto AiMakesChoice()                                              -> int;
+    auto CalculateWinner(int &ai_choice_num, int &player_choice_num)  -> void;
+    auto UpdateScore()                                                -> void;
 };
 

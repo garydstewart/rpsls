@@ -58,7 +58,6 @@ auto Display::Clear() -> void
     /* put the cursor at (0, 0) */
     bSuccess = SetConsoleCursorPosition(hConsole, coordScreen);
     PERR(bSuccess, "SetConsoleCursorPosition");
-
 #endif
 }
 
@@ -80,8 +79,7 @@ auto Display::DisplayWinner(std::string winner, bool is_tie) -> void
 }
 
 auto Display::DisplayScore(int player_score, int ai_score) -> void
-{
-    
+{ 
     std::cout << "********************"     << std::endl;
     std::cout << "Player: " << player_score << std::endl;
     std::cout << "Ai    : " << ai_score     << std::endl;
